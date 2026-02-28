@@ -5,5 +5,10 @@
   "finish_btn": "Finish ✓",
   "guide_me_btn": "🧭 Guide Me",
   "guide_complete": "✓ Guide Complete!",
-  "step_of": "Step {current} of {total}"
+  "step_of": "Step {current} of {total}",
+  "welcome_title": "Welcome! 👋",
+  "welcome_desc": "Would you like a quick tour of this page? I'll guide you through everything in just a few steps.",
+  "welcome_start": "Start Guide 🧭",
+  "welcome_cancel": "Maybe Later",
+  "select_language": "Choose your language"
 }

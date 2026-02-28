@@ -5,5 +5,10 @@
   "finish_btn": "Khatam ✓",
   "guide_me_btn": "🧭 Mujhe Guide Karo",
   "guide_complete": "✓ Guide Poora Hua!",
-  "step_of": "Kadam {current} / {total}"
+  "step_of": "Kadam {current} / {total}",
+  "welcome_title": "Swagat Hai! 👋",
+  "welcome_desc": "Kya aap is page ka ek chhota tour lena chahte hain? Main kuch steps mein sab dikhata hoon.",
+  "welcome_start": "Guide Shuru Karo 🧭",
+  "welcome_cancel": "Baad Mein",
+  "select_language": "Bhasha Chunein"
 }

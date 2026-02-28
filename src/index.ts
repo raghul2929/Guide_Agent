@@ -1,6 +1,13 @@
 // src/index.ts
 import { GuideEngine, GuideConfig } from './core/engine';
-import { setLanguage, getStrings } from './config/i18n';   // ← add getStrings
+import { setLanguage, getStrings } from './config/i18n';
+import {
+  showWelcomeDialog,
+  showLanguagePicker,
+  showCloseButton,
+  removeCloseButton,
+  removeWelcomeDialog
+} from './renderer/welcome';
 
 let engine: GuideEngine | null = null;
 let floatingBtn: HTMLElement | null = null;
@@ -11,7 +18,7 @@ const GuideAgent = {
   init(config: GuideConfig): void {
     engine = new GuideEngine(config);
     this.createFloatingButton();
-    console.log('GuideAgent initialized ✅');
+    this.showWelcomeOnFirstVisit();
   },
 
   async initFromUrl(configUrl: string): Promise<void> {
@@ -20,26 +27,57 @@ const GuideAgent = {
       const config = await loadConfig(configUrl);
       engine = new GuideEngine({ steps: config.steps });
       this.createFloatingButton();
-      console.log('GuideAgent initialized from URL ✅');
+      this.showWelcomeOnFirstVisit();
     } catch (error) {
       console.error('GuideAgent: initFromUrl failed:', error);
     }
   },
 
-  start(): void { engine?.start(); },
-  stop(): void { engine?.stop(); },
+  showWelcomeOnFirstVisit(): void {
+    const hasVisited = sessionStorage.getItem('ga_visited');
+    if (hasVisited) return;
+
+    setTimeout(() => {
+      showWelcomeDialog(
+        () => {
+          // Start clicked
+          sessionStorage.setItem('ga_visited', 'true');
+          this.updateFloatingButtonText();
+          showCloseButton(() => this.stop());
+          engine?.start();
+        },
+        () => {
+          // Cancel clicked
+          sessionStorage.setItem('ga_visited', 'true');
+        }
+      );
+    }, 1000);
+  },
+
+  start(): void {
+    engine?.start();
+    showCloseButton(() => this.stop());
+  },
+
+  stop(): void {
+    engine?.stop();
+    removeCloseButton();
+    removeWelcomeDialog();
+  },
 
   setLang(lang: string): void {
     setLanguage(lang);
-    // Update floating button text to new language
+    this.updateFloatingButtonText();
+  },
+
+  getStrings() {
+    return getStrings();
+  },
+
+  updateFloatingButtonText(): void {
     if (floatingBtn) {
       floatingBtn.textContent = getStrings().guide_me_btn;
     }
-  },
-
-  // Expose getStrings so HTML can read page content keys
-  getStrings() {
-    return getStrings();
   },
 
   createFloatingButton(): void {
@@ -71,8 +109,20 @@ const GuideAgent = {
     floatingBtn.addEventListener('mouseleave', () => {
       floatingBtn!.style.transform = 'scale(1)';
     });
+
+    // Guide Me click → show language picker first
     floatingBtn.addEventListener('click', () => {
-      engine?.start();
+      showLanguagePicker(
+        () => {
+          // Continue clicked → start guide
+          this.updateFloatingButtonText();
+          showCloseButton(() => this.stop());
+          engine?.start();
+        },
+        () => {
+          // Picker closed → do nothing, button stays
+        }
+      );
     });
 
     document.body.appendChild(floatingBtn);

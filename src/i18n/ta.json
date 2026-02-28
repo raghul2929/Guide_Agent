@@ -5,5 +5,10 @@
   "finish_btn": "Mudinthathu ✓",
   "guide_me_btn": "🧭 Vazhi Kaattu",
   "guide_complete": "✓ Vazhi Kaattal Mudinthathu!",
-  "step_of": "Padi {current} / {total}"
+  "step_of": "Padi {current} / {total}",
+  "welcome_title": "Vanakkam! 👋",
+  "welcome_desc": "Indha page-ai pathi oru siriya vilakkam venum? Sila padikalil ellaam kaattukirein.",
+  "welcome_start": "Thoda Thottangu 🧭",
+  "welcome_cancel": "Pinbu Paarkiren",
+  "select_language": "Mozhi Theru"
 }

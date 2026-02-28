@@ -13,7 +13,14 @@ export interface LanguageStrings {
   guide_me_btn: string;
   guide_complete: string;
   step_of: string;
+  // Welcome dialog
+  welcome_title: string;
+  welcome_desc: string;
+  welcome_start: string;
+  welcome_cancel: string;
+  select_language: string;
 }
+
 
 const languages: Record<string, LanguageStrings> = { en, ta, hi };
 
