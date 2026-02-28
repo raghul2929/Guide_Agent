@@ -1,0 +1,9 @@
+{
+  "guide_label": "GuideAgent",
+  "next_btn": "Aage →",
+  "prev_btn": "← Peeche",
+  "finish_btn": "Khatam ✓",
+  "guide_me_btn": "🧭 Mujhe Guide Karo",
+  "guide_complete": "✓ Guide Poora Hua!",
+  "step_of": "Kadam {current} / {total}"
+}

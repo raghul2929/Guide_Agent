@@ -1,0 +1,78 @@
+{
+  "page": "home",
+  "language": "en",
+  "steps": [
+    {
+      "selector": "[data-guide-id='title']",
+      "order": 1,
+      "translations": {
+        "en": {
+          "title": "Welcome!",
+          "description": "This is a portfolio — let me walk you through it."
+        },
+        "ta": {
+          "title": "Vanakkam!",
+          "description": "Ithu oru portfolio — naan ungalukku kaattukirein."
+        },
+        "hi": {
+          "title": "Swagat Hai!",
+          "description": "Yeh ek portfolio hai — main aapko guide karunga."
+        }
+      }
+    },
+    {
+      "selector": "[data-guide-id='projects']",
+      "order": 2,
+      "translations": {
+        "en": {
+          "title": "Projects Section",
+          "description": "All the apps I have built are listed here."
+        },
+        "ta": {
+          "title": "Thittangal Pakkam",
+          "description": "Naan kattiya ellaa apps-um inga irukku."
+        },
+        "hi": {
+          "title": "Projects Section",
+          "description": "Maine jo apps banaye hain woh sab yahan hain."
+        }
+      }
+    },
+    {
+      "selector": "[data-guide-id='skills']",
+      "order": 3,
+      "translations": {
+        "en": {
+          "title": "Skills",
+          "description": "Technologies and tools I work with daily."
+        },
+        "ta": {
+          "title": "Thiran",
+          "description": "Naan thینamum payan padutum tools matrum technologies."
+        },
+        "hi": {
+          "title": "Kaushal",
+          "description": "Main rozana jin tools aur technologies ka use karta hoon."
+        }
+      }
+    },
+    {
+      "selector": "[data-guide-id='contact']",
+      "order": 4,
+      "translations": {
+        "en": {
+          "title": "Contact Me",
+          "description": "Fill this form to get in touch directly."
+        },
+        "ta": {
+          "title": "Thodarbu Kolgal",
+          "description": "Ennai nerade thodara keezhey form nirapungal."
+        },
+        "hi": {
+          "title": "Sampark Karein",
+          "description": "Seedha sampark karne ke liye neeche form bharein."
+        }
+      }
+    }
+  ]
+}

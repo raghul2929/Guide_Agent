@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GuideAgent Test</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: sans-serif; padding: 40px; background: #f8fafc; color: #1e293b; }
+    h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
+    .subtitle { color: #64748b; font-size: 16px; margin-bottom: 40px; }
+    .section { background: white; padding: 24px; border-radius: 10px; width: 380px; margin-top: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .section h2 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .section p { font-size: 14px; color: #64748b; line-height: 1.6; }
+
+    /* Guide language switcher — only controls guide UI language */
+    .lang-switcher {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 32px;
+      align-items: center;
+    }
+    .lang-label {
+      font-size: 13px;
+      color: #64748b;
+      margin-right: 4px;
+    }
+    .lang-btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      background: white;
+      color: #475569;
+      font-size: 13px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .lang-btn:hover, .lang-btn.active {
+      background: #6366f1;
+      color: white;
+      border-color: #6366f1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Guide language switcher — ONLY changes guide tooltip language -->
+  <div class="lang-switcher">
+    <span class="lang-label">Guide language:</span>
+    <button class="lang-btn active" id="btn-en" onclick="switchLang('en')">English</button>
+    <button class="lang-btn" id="btn-ta" onclick="switchLang('ta')">Tamil</button>
+    <button class="lang-btn" id="btn-hi" onclick="switchLang('hi')">Hindi</button>
+  </div>
+
+  <!-- Website content — always English, never changes -->
+  <h1 data-guide-id="title">My Portfolio</h1>
+  <p class="subtitle">Welcome to my personal portfolio website</p>
+
+  <div class="section" data-guide-id="projects">
+    <h2>Projects</h2>
+    <p>All the apps and websites I have built are listed here.</p>
+  </div>
+
+  <div class="section" data-guide-id="skills">
+    <h2>Skills</h2>
+    <p>Technologies and tools I work with daily.</p>
+  </div>
+
+  <div class="section" data-guide-id="contact">
+    <h2>Contact Me</h2>
+    <p>Fill the form below to reach out to me directly.</p>
+  </div>
+
+  <script type="module">
+    import GuideAgent from './dist/index.mjs';
+
+    // Initialize guide from config
+    await GuideAgent.initFromUrl('./guide.json');
+
+    // Default guide language — English
+    GuideAgent.setLang('en');
+
+    // Switch ONLY the guide language — website stays untouched
+    window.switchLang = function(lang) {
+      GuideAgent.setLang(lang);
+      GuideAgent.stop(); // stop current guide, restart with new language
+
+      // Update active button
+      document.querySelectorAll('.lang-btn')
+        .forEach(b => b.classList.remove('active'));
+      document.getElementById(`btn-${lang}`).classList.add('active');
+    };
+  </script>
+
+</body>
+</html>

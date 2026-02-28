@@ -1,0 +1,9 @@
+{
+  "guide_label": "GuideAgent",
+  "next_btn": "Next →",
+  "prev_btn": "← Prev",
+  "finish_btn": "Finish ✓",
+  "guide_me_btn": "🧭 Guide Me",
+  "guide_complete": "✓ Guide Complete!",
+  "step_of": "Step {current} of {total}"
+}

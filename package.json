@@ -1,17 +1,35 @@
 {
   "name": "guideagent",
   "version": "0.1.0",
-  "description": "Contextual in-app guidance SDK",
+  "description": "Contextual in-app guidance SDK for web apps — multilingual, config-driven, developer-first",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch"
   },
+  "keywords": [
+    "onboarding",
+    "guide",
+    "tooltip",
+    "sdk",
+    "walkthrough",
+    "multilingual",
+    "react",
+    "flutter"
+  ],
+  "author": "Raghul <your@email.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raghul2929/Guide_Agent.git"
+  },
   "devDependencies": {
-    "typescript": "^5.0.0",
-    "tsup": "^8.0.0"
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
   }
 }
