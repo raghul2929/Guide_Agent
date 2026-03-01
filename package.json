@@ -1,6 +1,6 @@
 {
   "name": "guideagent",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Contextual in-app guidance SDK for web apps — multilingual, config-driven, developer-first",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
